@@ -14,9 +14,9 @@ pipeline {
         
         stage('listing') {
             steps {
-                script {
-                    sh 'ls'
-                }
+                dir('my-webapp') {
+                        sh 'ls'
+                } 
             }
         }
     }
