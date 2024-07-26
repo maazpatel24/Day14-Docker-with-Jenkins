@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/maazpatel24/Day14-Docker-with-Jenkins/tree/master.git', branch: 'master'
+                git url: 'https://github.com/maazpatel24/Day14-Docker-with-Jenkins.git', branch: 'master'
             }
         }
         stage('listing') [
