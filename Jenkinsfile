@@ -15,7 +15,7 @@ pipeline {
         stage('listing') {
             steps {
                 dir('my-webapp') {
-                        sh 'docker build -t maazpatel24/nginx-my-app:latest'
+                        sh 'docker build -t maazpatel24/nginx-my-app:latest .'
                 } 
             }
         }
