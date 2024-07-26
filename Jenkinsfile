@@ -11,12 +11,13 @@ pipeline {
                 git url: 'https://github.com/maazpatel24/Day14-Docker-with-Jenkins.git', branch: 'master'
             }
         }
-        stage('listing') [
+        
+        stage('listing') {
             steps {
                 script {
                     sh 'ls'
                 }
             }
-        ]
+        }
     }
 }
