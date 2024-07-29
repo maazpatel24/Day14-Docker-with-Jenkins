@@ -1,0 +1,8 @@
+- host: all
+  become: true
+  tasks:
+  - name: Install aptitude
+    ansible.builtin.apt:
+      name: aptitude
+      state: latest
+      update_cache: true
