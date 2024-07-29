@@ -32,7 +32,7 @@ pipeline {
         stage ('Running image') {
             steps {
                 script {
-                    sh "docker run -d -p 5051:80 --name ${containerName} ${dockerImage}"
+                    sh "docker run -d -p 5051:80 --name ${containerName} ${imageName}:v2.0"
                 }
             }
         }
