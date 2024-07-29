@@ -14,14 +14,14 @@ pipeline {
                 git url: 'https://github.com/maazpatel24/Day14-Docker-with-Jenkins.git', branch: 'master'
             }
         }
-        stage ('Building Image') {
+        stage ('Build Docker Image') {
             steps {
                 script {
                     dockerImage = docker.build"${imageName}:${tag}"
                 }
             }
         }
-        stage ('Docker Push') {
+        stage ('Push Docker Image') {
             steps {
                 script {
                     docker.withRegistry('', dockerHubCredentials) {
@@ -30,7 +30,7 @@ pipeline {
                 }
             }
         }
-        stage ('Running image') {
+        stage ('Deploy Container') {
             steps {
                 script {
                     sh "docker run -d -p 5051:80 --name ${containerName} ${imageName}:${tag}"
@@ -38,5 +38,13 @@ pipeline {
             }
         }
 
+    }
+    post {
+        success {
+            echo 'Build and test succeeded!'
+        }
+        failure {
+            echo 'Build or test failed!'
+        }
     }
 }
