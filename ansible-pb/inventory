@@ -1,2 +1,30 @@
+[web]
+server01 ansible_host=3.135.205.26 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/ansible-worker.pem 
+
 [webserver]
-eic@192.168.232.15
+test01 ansible_host=3.129.67.37
+test02 ansible_host=3.16.78.37 
+ 
+[dbserver]
+db01 ansible_host=18.216.137.227 
+
+[deployment]
+deploy01 ansible_host=18.190.160.189 
+
+# Group
+[production:children]
+webserver
+dbserver
+deployment
+
+[deployment:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=~/.ssh/ansible-worker.pem
+
+[webserver:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=~/.ssh/ansible-worker.pem
+
+[dbserver:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key_file=~/.ssh/ansible-worker.pem
